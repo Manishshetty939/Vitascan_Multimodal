@@ -1,0 +1,11 @@
+              precision    recall  f1-score   support
+
+   Vitamin_A       0.28      0.22      0.24        79
+ Vitamin_B12       0.38      0.32      0.35        79
+   Vitamin_C       0.73      0.87      0.80        79
+   Vitamin_D       0.37      0.43      0.40        79
+   Vitamin_E       0.94      1.00      0.97        79
+
+    accuracy                           0.57       395
+   macro avg       0.54      0.57      0.55       395
+weighted avg       0.54      0.57      0.55       395

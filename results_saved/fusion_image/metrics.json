@@ -1,0 +1,7 @@
+{
+    "test_accuracy": 0.6566416025161743,
+    "test_loss": 0.7837221622467041,
+    "num_samples": 1995,
+    "num_classes": 5,
+    "model": "ResNet50 + EfficientNet-B0 Feature Fusion"
+}
