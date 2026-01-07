@@ -5,11 +5,7 @@
 
 ### Multimodal Vitamin Deficiency Detection using Deep Learning
 
-![Image](https://www.researchgate.net/publication/357899506/figure/fig2/AS%3A1113483554889730%401642486575498/Architecture-of-multimodal-deep-learning-model-A-multimodal-deep-learning-model-aims-for.png)
 
-![Image](https://www.researchgate.net/publication/383235746/figure/fig2/AS%3A11431281272479102%401724123076785/Deep-learning-pipeline-for-magnetic-resonance-MR-image-preprocessing-and-segmentation.png)
-
-![Image](https://www.researchgate.net/publication/352975738/figure/fig3/AS%3A11431281102529418%401669482668798/The-architecture-of-the-proposed-AI-and-IoT-based-healthcare-model.png)
 
 **VitaScan** is an AI-powered, **non-invasive health screening system** that detects vitamin deficiencies by jointly analyzing **medical images** (skin, nails, eyes) and **patient-reported symptoms**.
 The system emulates clinical diagnostic reasoning by fusing **visual biomarkers** with **semantic symptom representations**, enabling accurate and explainable predictions.
