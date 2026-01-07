@@ -1,41 +1,67 @@
-🧬 VitaScan
-Multimodal Vitamin Deficiency Detection using Deep Learning
-<div align="center">
 
-✨ AI-powered, Non-Invasive Health Screening System ✨
-Combining medical images and patient-reported symptoms for accurate vitamin deficiency detection
+---
 
-</div>
-🚀 Project Overview
+# 🧬 **VitaScan**
 
-VitaScan is an advanced multimodal deep learning system designed to detect vitamin deficiencies by jointly analyzing:
+### Multimodal Vitamin Deficiency Detection using Deep Learning
 
-📷 Medical images (skin / nails / eyes)
+![Image](https://www.researchgate.net/publication/357899506/figure/fig2/AS%3A1113483554889730%401642486575498/Architecture-of-multimodal-deep-learning-model-A-multimodal-deep-learning-model-aims-for.png)
 
-📝 Patient-reported symptoms (natural language text)
+![Image](https://www.researchgate.net/publication/383235746/figure/fig2/AS%3A11431281272479102%401724123076785/Deep-learning-pipeline-for-magnetic-resonance-MR-image-preprocessing-and-segmentation.png)
 
-The system mimics clinical diagnostic reasoning by fusing visual biomarkers with semantic symptom embeddings, delivering accurate, explainable, and real-time predictions through a web-based interface.
+![Image](https://www.researchgate.net/publication/352975738/figure/fig3/AS%3A11431281102529418%401669482668798/The-architecture-of-the-proposed-AI-and-IoT-based-healthcare-model.png)
 
-🎯 Supported Vitamin Deficiencies
-Vitamin	Common Indicators
-🟠 Vitamin A	Night blindness, dry eyes
-🔵 Vitamin B12	Fatigue, numbness, memory issues
-🟢 Vitamin C	Bleeding gums, poor wound healing
-🟡 Vitamin D	Bone pain, muscle weakness
-🔴 Vitamin E	Coordination issues, blurred vision
-🧠 Key Features
+**VitaScan** is an AI-powered, **non-invasive health screening system** that detects vitamin deficiencies by jointly analyzing **medical images** (skin, nails, eyes) and **patient-reported symptoms**.
+The system emulates clinical diagnostic reasoning by fusing **visual biomarkers** with **semantic symptom representations**, enabling accurate and explainable predictions.
 
-✅ Multimodal learning (Images + Text)
-✅ Dual CNN architecture (ResNet50 + EfficientNet-B0)
-✅ Transformer-based symptom embeddings (MiniLM)
-✅ Leakage-free training and evaluation
-✅ Explainable AI with Grad-CAM
-✅ Real-time Flask web application
-✅ High accuracy under controlled conditions
+---
 
-🏗️ System Architecture
+## 🚀 Project Overview
+
+Vitamin deficiencies often manifest through subtle visual cues and subjective symptoms. VitaScan leverages **multimodal deep learning** to combine these complementary sources of information, delivering high-accuracy predictions through a lightweight web interface.
+
+**Input Modalities**
+
+* 📷 Medical images (skin / nail / eye)
+* 📝 Free-text symptom descriptions
+
+**Output**
+
+* 🎯 Predicted vitamin deficiency
+* 📊 Confidence score
+* 🔍 Visual explanation (Grad-CAM)
+
+---
+
+## 🎯 Supported Vitamin Deficiencies
+
+| Vitamin        | Common Indicators                   |
+| -------------- | ----------------------------------- |
+| 🟠 Vitamin A   | Night blindness, dry eyes           |
+| 🔵 Vitamin B12 | Fatigue, numbness, memory issues    |
+| 🟢 Vitamin C   | Bleeding gums, poor wound healing   |
+| 🟡 Vitamin D   | Bone pain, muscle weakness          |
+| 🔴 Vitamin E   | Coordination issues, blurred vision |
+
+---
+
+## 🧠 Key Features
+
+* ✅ Multimodal learning (Images + Text)
+* ✅ Dual CNN backbone (ResNet50 + EfficientNet-B0)
+* ✅ Transformer-based symptom embeddings (MiniLM)
+* ✅ Strict leakage-free training & evaluation
+* ✅ Explainable AI with Grad-CAM
+* ✅ Real-time Flask web application
+* ✅ High accuracy under controlled conditions
+
+---
+
+## 🏗️ System Architecture
+
+```
 User Input
- ├── Image (Skin / Nail / Eye)
+ ├── Medical Image (Skin / Nail / Eye)
  ├── Symptoms (Text)
         ↓
 Image Feature Extraction
@@ -43,82 +69,92 @@ Image Feature Extraction
  ├── EfficientNet-B0 (Fine-grained features)
         ↓
 Symptom Encoding
- └── Transformer (MiniLM – 384-D embeddings)
+ └── Transformer (MiniLM – 384D)
         ↓
 Multimodal Feature Fusion
         ↓
 Neural Classifier
         ↓
 Vitamin Deficiency Prediction
+```
 
-🧪 Methodology
-🔹 Image Processing
+---
 
-Images resized to 224×224
+## 🧪 Methodology
 
-Normalized and processed using two pretrained CNNs
+### 🔹 Image Processing
 
-Feature extraction from Global Average Pooling layers
+* Images resized to **224 × 224**
+* Normalized and passed through pretrained CNNs
+* Feature extraction from **Global Average Pooling** layers
 
-🔹 Symptom Processing
+### 🔹 Symptom Processing
 
-Free-text symptoms encoded using Sentence Transformers
+* Free-text symptoms encoded using **Sentence Transformers**
+* Captures semantic similarity between symptom descriptions
+* Generates **384-dimensional embeddings**
 
-Captures semantic relationships between symptoms
+### 🔹 Multimodal Fusion
 
-Generates 384-dimensional embeddings
+Feature concatenation of:
 
-🔹 Multimodal Fusion
+* ResNet50 → **2048**
+* EfficientNet-B0 → **1280**
+* Symptom embeddings → **384**
 
-Concatenation of:
+**Total fused feature vector:** **3712 dimensions**
 
-ResNet50 features (2048)
+---
 
-EfficientNet-B0 features (1280)
+## 🔍 Explainability (Grad-CAM)
 
-Symptom embeddings (384)
+To enhance transparency:
 
-Final fused vector: 3712 dimensions
+* Grad-CAM heatmaps highlight critical image regions
+* Helps interpret model decisions
+* Improves clinical trust and usability
 
-🔍 Explainability (Grad-CAM)
+---
 
-To improve transparency and trust:
+## 📊 Results
 
-Grad-CAM heatmaps highlight influential image regions
+| Model Configuration       | Test Accuracy |
+| ------------------------- | ------------- |
+| Image-only fusion         | ~67%          |
+| Multimodal (with leakage) | 100% ❌        |
+| Multimodal (leak-free)    | ≈99% ✅        |
 
-Helps understand why the model made a prediction
+⚠️ *Results are obtained under controlled experimental settings.
+Real-world clinical performance may vary.*
 
-Useful for both users and clinicians
+---
 
-📊 Results
-Model	Test Accuracy
-Image-only fusion	~67%
-Multimodal (with leakage)	100% ❌
-Multimodal (Leak-free)	≈99% ✅
+## 🖥️ Web Application (Flask)
 
-⚠️ High performance is achieved under controlled experimental conditions.
-Real-world clinical performance may vary due to noise in symptoms and imaging quality.
+### Features
 
-🖥️ Web Application (Flask UI)
-Features
+* 📤 Upload medical images
+* ✍️ Enter symptoms in natural language
+* 📈 Get vitamin deficiency prediction
+* 🎯 Confidence score display
 
-📤 Upload medical image
+### Run Locally
 
-✍️ Enter symptoms in natural language
-
-📈 Get predicted vitamin deficiency
-
-🎯 Confidence score output
-
-Run locally
+```bash
 python app.py
+```
 
+Open in browser:
 
-Open browser:
-
+```
 http://127.0.0.1:5000
+```
 
-📁 Project Structure
+---
+
+## 📁 Project Structure
+
+```
 VITASCAN/
 ├── app.py
 ├── Data/
@@ -131,137 +167,119 @@ VITASCAN/
 │   ├── split.csv
 │   └── symptoms.csv
 ├── models/
-│   ├── resnet50_finetuned_model_final.h5
-│   ├── efficientnet_b0_finetuned_best.h5
-│   └── multimodal_fusion_classifier_split.h5
 ├── features/
-│   ├── resnet_train.npy
-│   ├── resnet_test.npy
-│   ├── efficientnet_train.npy
-│   ├── efficientnet_test.npy
-│   ├── symptoms_train.npy
-│   └── symptoms_test.npy
-├── results_saved/
-│   └── multimodal_final/
 ├── source/
-│   ├── create_train_test_split.py
-│   ├── feature_extractor_split.py
-│   └── multimodal_fusion_classifier_split.py
 ├── symptoms/
-│   ├── create_symptoms_csv.py
-│   ├── symptom_embedding.py
-│   └── split_symptom_embeddings.py
 └── README.md
+```
 
-⚠️ Repository Note (Important)
+---
 
-Due to GitHub file size limits and best practices, the following are NOT included in this repository:
+## ⚠️ Repository Note
 
-🚫 Not Pushed to GitHub
+Due to GitHub size limits, the following are **not included**:
 
-Trained model files (.h5, .keras)
+* Trained model files (`.h5`, `.keras`)
+* Extracted feature files (`.npy`)
+* Image datasets and embeddings
 
-Extracted feature files (.npy)
+These are generated **locally** during training.
 
-Image & symptom embeddings
+### Ignored via `.gitignore`
 
-Original medical image datasets
-
-These files are generated locally during training and inference.
-
-📦 Files Ignored via .gitignore
+```
 models/
 features/
 Data/
 *.h5
 *.npy
+```
 
-▶️ How to Reproduce Results
+---
 
-Prepare dataset:
+## ▶️ Reproducibility
 
+### Dataset Structure
+
+```
 Data/
 ├── Vitamin_A/
 ├── Vitamin_B12/
 ├── Vitamin_C/
 ├── Vitamin_D/
 └── Vitamin_E/
+```
 
+### Pipeline Execution
 
-Run pipeline:
-
+```bash
 python source/create_train_test_split.py
 python symptoms/create_symptoms_csv.py
 python symptoms/symptom_embedding.py
 python symptoms/split_symptom_embeddings.py
 python source/feature_extractor_split.py
 python source/multimodal_fusion_classifier_split.py
+```
 
+---
 
-Models and features will be generated locally.
+## 🛠️ Tech Stack
 
-🛠️ Tech Stack
+* Python 3
+* TensorFlow / Keras
+* ResNet50
+* EfficientNet-B0
+* Sentence Transformers (MiniLM)
+* NumPy, Pandas, Scikit-learn
+* Flask
+* HTML / CSS
 
-Python 3
+---
 
-TensorFlow / Keras
+## 🧩 Learning Outcomes
 
-ResNet50
+* Multimodal deep learning system design
+* Preventing data leakage
+* Feature-level fusion strategies
+* Explainable AI in healthcare
+* End-to-end ML deployment
 
-EfficientNet-B0
+---
 
-Sentence Transformers (MiniLM)
+## ⚠️ Limitations
 
-NumPy, Pandas, Scikit-learn
+* Uses curated academic datasets
+* Symptoms are synthetically generated
+* Not a substitute for professional medical diagnosis
 
-Flask
+---
 
-HTML / CSS
+## 🔮 Future Enhancements
 
-🧩 Learning Outcomes
+* Real patient symptom data
+* Clinical validation
+* Mobile application
+* Cloud deployment
+* Severity estimation of deficiencies
 
-Multimodal deep learning design
+---
 
-Preventing data leakage
+## 👨‍💻 Author
 
-Feature-level fusion strategies
-
-Explainable AI in healthcare
-
-End-to-end ML system deployment
-
-⚠️ Limitations
-
-Uses curated academic datasets
-
-Symptoms are synthetically generated
-
-Not a substitute for medical diagnosis
-
-🔮 Future Enhancements
-
-Real patient symptom data
-
-Clinical validation
-
-Mobile application
-
-Cloud deployment
-
-Vitamin deficiency severity estimation
-
-👨‍💻 Author
-
-Manish Shetty
+**Manish Shetty**
 AI / ML Engineer
 📍 India
 
-⭐ Support
+---
+
+## ⭐ Support
 
 If you found this project useful:
 
-⭐ Star the repository
+* ⭐ Star the repository
+* 🍴 Fork for experimentation
+* 🧠 Share feedback
 
-🍴 Fork for experimentation
+---
 
-🧠 Share feedback
+
