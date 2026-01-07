@@ -41,3 +41,8 @@ multimodal_final/
 
 # Logs
 *.log
+
+# Uploads from local dev Flask server
+uploads/
+# flask_app uploads
+flask_app/uploads/

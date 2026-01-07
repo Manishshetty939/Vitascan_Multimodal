@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vitascan - Demo UI</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; }
+      label { display:block; margin-top:0.5rem }
+    </style>
+  </head>
+  <body>
+    <h1>Vitascan Demo UI</h1>
+    <p>Upload an image and optionally select symptoms and a model. This demo saves the upload and echoes selections; wire model inference later.</p>
+
+    <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+      <label>Image file (optional):
+        <input type="file" name="image" accept="image/*">
+      </label>
+
+      <label>Available models:
+        <select name="model">
+          <option value="">(none)</option>
+          {% for m in models %}
+          <option value="{{m}}">{{m}}</option>
+          {% endfor %}
+        </select>
+      </label>
+
+      {% if symptoms %}
+      <label>Symptoms (select multiple with Ctrl/Cmd):
+        <select name="symptoms" multiple size="6">
+          {% for s in symptoms %}
+          <option value="{{s}}">{{s}}</option>
+          {% endfor %}
+        </select>
+      </label>
+      {% endif %}
+
+      <p>
+        <button type="submit">Submit</button>
+      </p>
+    </form>
+
+    <hr>
+    <h3>Repository content</h3>
+    <ul>
+      <li>Models directory: <strong>{{ models|length }}</strong> files</li>
+      <li>Uploads stored in `uploads/`</li>
+    </ul>
+  </body>
+</html>
