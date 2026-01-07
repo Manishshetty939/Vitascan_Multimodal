@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# macOS
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints
+
+# Project data, models, and features — do not push
+Data/
+data/
+models/
+features/
+
+# Large binary / numeric files
+*.npy
+*.h5
+*.hdf5
+
+# Results and temporary outputs
+results_saved/
+gradcam_results/
+multimodal_final/
+
+# Logs
+*.log
